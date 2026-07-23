@@ -3,5 +3,135 @@
   "version": "0.1.0",
   "license": "Apache-2.0",
   "type": "module",
-  "description": "Web-analytics meaning pack — a ready-made dashboard artifact extension for Cinatra."
+  "packageManager": "pnpm@9.15.9",
+  "description": "Web-analytics meaning pack — a ready-made dashboard artifact extension for Cinatra.",
+  "files": [
+    "src",
+    "cinatra"
+  ],
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "@cinatra-ai/sdk-extensions": "*"
+  },
+  "peerDependenciesMeta": {
+    "@cinatra-ai/sdk-extensions": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
+  },
+  "cinatra": {
+    "apiVersion": "cinatra.ai/v1",
+    "kind": "artifact",
+    "displayName": "Web Analytics Dashboard",
+    "vendor": {
+      "key": "cinatra-ai",
+      "name": "Cinatra"
+    },
+    "dependencies": [
+      {
+        "packageName": "@cinatra-ai/dashboard-artifact",
+        "edgeType": "runtime",
+        "versionConstraint": {
+          "kind": "semver-range",
+          "range": "^0.1.0"
+        },
+        "requirement": "required",
+        "kind": "artifact"
+      }
+    ],
+    "artifact": {
+      "accepts": {
+        "dashboard": true
+      },
+      "templates": [
+        {
+          "id": "web-analytics-overview",
+          "form": "dashboard",
+          "mimeType": "application/vnd.cinatra.dashboard.v12+json",
+          "path": "./cinatra/dashboard.json",
+          "default": true
+        }
+      ],
+      "objectTypes": [
+        {
+          "type": "@cinatra-ai/web-analytics-dashboard-artifact:web-analytics-dashboard",
+          "claim": "dedicated",
+          "dispositions": {
+            "projection": "artifact-safe",
+            "pinnable": false,
+            "snapshotPolicy": "metadata",
+            "sensitivity": "normal"
+          },
+          "schema": {
+            "type": "object",
+            "properties": {
+              "artifactType": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "dashboardId": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "entityRef": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string",
+                "const": "application/vnd.cinatra.dashboard.v12+json"
+              },
+              "size": {
+                "type": "number"
+              },
+              "originKind": {
+                "type": "string"
+              },
+              "latestRepresentationRevisionId": {
+                "type": "string"
+              },
+              "latestDigest": {
+                "type": "string"
+              },
+              "viewerHint": {
+                "type": "string"
+              },
+              "excerpt": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "artifactType",
+              "dashboardId",
+              "status",
+              "mime",
+              "size",
+              "originKind",
+              "latestRepresentationRevisionId"
+            ],
+            "additionalProperties": true
+          }
+        }
+      ]
+    },
+    "dashboardContribution": {
+      "abiVersion": 1,
+      "sdkAbiRange": "^2.4.0",
+      "contributionVersion": 1,
+      "contributionKey": "web-analytics",
+      "sidecar": "./cinatra/dashboard.json"
+    }
+  }
 }
