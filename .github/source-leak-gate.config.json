@@ -1,0 +1,6 @@
+{
+  "//": "Per-repo source-leak-gate config. The dashboard sidecar's apiVersion is the PUBLIC schema literal DASHBOARD_CONFIG_V12_VERSION (the apiVersion 1.2 dashboard-config format) that the host validateDashboardConfigV12 REQUIRES verbatim — a false positive for SLG_MILESTONE_VERSION (a bare planning-milestone version token), not an internal milestone reference. This lineExclude suppresses ONLY the exact apiVersion schema-literal line shape; every other line in every file stays fully scanned.",
+  "lineExcludes": [
+    "\"apiVersion\"\\s*:\\s*\"v[0-9]+\\.[0-9]+"
+  ]
+}
