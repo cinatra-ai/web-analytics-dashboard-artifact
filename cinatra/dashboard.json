@@ -25,7 +25,7 @@
                   "query": {
                     "chartType": "kpiNumber",
                     "chartConfig": {
-                      "series": ["agent_runs.count"]
+                      "yAxis": ["agent_runs.count"]
                     },
                     "displayConfig": {}
                   }
