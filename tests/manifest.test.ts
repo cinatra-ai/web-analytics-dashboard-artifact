@@ -158,7 +158,9 @@ describe("package.json manifest — the web-analytics meaning pack identity", ()
     expect(webAnalyticsDashboardArtifactManifest.accepts).toEqual(pkg.cinatra.artifact.accepts);
     expect(webAnalyticsDashboardArtifactManifest.templates).toEqual(pkg.cinatra.artifact.templates);
     expect(webAnalyticsDashboardArtifactManifest.objectTypes).toEqual(pkg.cinatra.artifact.objectTypes);
-    expect(DASHBOARD_ARTIFACT_MEDIA_TYPE).toBe("application/vnd.cinatra.dashboard.v12+json");
+    // The constant equals the host dashboard writer's form: DASHBOARD_RESOURCE_MIME in
+    // src/lib/dashboards/dashboard-artifact-twin-writer.ts of cinatra-ai/cinatra.
+    expect(DASHBOARD_ARTIFACT_MEDIA_TYPE).toBe("application/vnd.cinatra.dashboard+json");
   });
 });
 
