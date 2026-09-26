@@ -37,12 +37,11 @@ import type { SemanticArtifactManifest } from "@cinatra-ai/sdk-extensions";
 // the two are pinned in agreement by `tests/manifest.test.ts`.
 
 /**
- * The published dashboard representation media type — the envelope-versioned
- * (`v12`) media type the base `@cinatra-ai/dashboard-artifact` twin rows carry
- * and the host representation viewer registers against.
+ * The published dashboard representation media type — the media type the
+ * host's dashboard writer stores on a dashboard's resource.
  */
 export const DASHBOARD_ARTIFACT_MEDIA_TYPE =
-  "application/vnd.cinatra.dashboard.v12+json" as const;
+  "application/vnd.cinatra.dashboard+json" as const;
 
 /**
  * The generic base object type every dashboard twin row carries (owned by the

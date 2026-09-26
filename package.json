@@ -56,7 +56,7 @@
         {
           "id": "web-analytics-overview",
           "form": "dashboard",
-          "mimeType": "application/vnd.cinatra.dashboard.v12+json",
+          "mimeType": "application/vnd.cinatra.dashboard+json",
           "path": "./cinatra/dashboard.json",
           "default": true
         }
@@ -91,7 +91,7 @@
               },
               "mime": {
                 "type": "string",
-                "const": "application/vnd.cinatra.dashboard.v12+json"
+                "const": "application/vnd.cinatra.dashboard+json"
               },
               "size": {
                 "type": "number"
